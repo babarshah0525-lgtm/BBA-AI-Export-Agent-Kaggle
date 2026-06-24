@@ -95,7 +95,7 @@ open "day4-hitl-agent/index.html"
 
 ## 👤 Author
 
-**Babar Shah**
+**Babar  Hussain Shah**
 - 🎓 2nd Year AI Student — Jiangxi University of Science & Technology, China
 - 🌐 [LinkedIn](https://linkedin.com/in/babar-hussain-shah-/)
 - 💻 [GitHub](https://github.com/babarshah0525-lgtm)
