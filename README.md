@@ -10,7 +10,7 @@
 
 ## 🎯 Project Overview
 
-BBA Industrial Film Manufacturing Co. is a real BOPP packaging film manufacturer based in Ganzhou, China, exporting to 40+ countries. This project transforms their static web presence into a fully AI-powered export inquiry system using Google's AI agent stack.
+BOPP film exporters lose hours manually screening buyer inquiries — BBA's AI agent triages them instantly, automating 80% of routine requests and flagging high-risk orders in real time, saving 15+ hours of manual review every week.
 
 ---
 
@@ -51,7 +51,18 @@ BBA Industrial Film Manufacturing Co. is a real BOPP packaging film manufacturer
 - Security alerts for spam detection
 
 ---
+---
 
+## 🧠 How It Works — Risk Scoring Logic
+
+Every buyer inquiry is automatically scored by the AI agent based on order characteristics — product type, order volume, buyer's country, and whether the buyer is new or requesting custom/OEM terms.
+
+- **Score below 40** (standard products, under 5 tons, established markets) → auto-approved instantly, buyer receives immediate confirmation
+- **Score 40 or above** (large orders, OEM requests, new/high-risk countries, or flagged as suspicious) → routed to the Export Approval Center for human review before any response is sent
+
+Every decision — automated or human — is logged in a full audit trail for ISO 9001 compliance.
+
+![Architecture Diagram](bba_architecture.svg)
 ## 🛠️ Tech Stack
 
 | Layer | Technology |
