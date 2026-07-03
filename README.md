@@ -59,13 +59,13 @@ BOPP film exporters lose hours manually screening buyer inquiries — BBA's AI a
 ![Homepage](Homepage.png)
 
 ### AI Chat Agent
-![Chat Widget](Chat-Widget.png)
+![Chat Widget](Chat_Widget.png)
 
 ### HITL Approval Dashboard
 ![Dashboard](Dashboard.png)
 
 ### Security Simulation
-![Security Test](Security-Simulation.png)
+![Security Test](Security_Simulation.png)
 
 ---
 
