@@ -109,7 +109,7 @@ Every decision — automated or human — is logged in a full audit trail for IS
 
 ```bash
 # Clone the repo
-git clone https://github.com/babarshah0525-lgtm/BBC-Website-Using-Antigravity.git
+git clone https://github.com/babarshah0525-lgtm/BBA-AI-Export-Agent-Kaggle.git
 
 # Open main website
 open "bbc website/index.html"
