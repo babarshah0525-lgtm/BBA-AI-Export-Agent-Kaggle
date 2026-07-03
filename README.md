@@ -80,7 +80,7 @@ Every buyer inquiry is automatically scored by the AI agent based on order chara
 
 Every decision — automated or human — is logged in a full audit trail for ISO 9001 compliance.
 
-![Architecture Diagram](bba_architecture.svg)
+![Architecture Diagram](bba_architecture.svg.svg)
 
 ## 🛠️ Tech Stack
 
