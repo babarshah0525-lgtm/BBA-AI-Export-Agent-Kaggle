@@ -49,9 +49,27 @@ BOPP film exporters lose hours manually screening buyer inquiries — BBA's AI a
 - One-click Approve / Reject / Request Info
 - ISO 9001 compliant audit trail
 - Security alerts for spam detection
+- Security alerts for spam detection
 
 ---
+
+## 📸 Screenshots
+
+### Main Website
+![Homepage](Homepage.png)
+
+### AI Chat Agent
+![Chat Widget](Chat Widget.png)
+
+### HITL Approval Dashboard
+![Dashboard](Dashboard.png)
+
+### Security Simulation
+![Security Test](Security Simulation.png)
+
 ---
+
+## 🧠 How It Works — Risk Scoring Logic
 
 ## 🧠 How It Works — Risk Scoring Logic
 
@@ -63,27 +81,25 @@ Every buyer inquiry is automatically scored by the AI agent based on order chara
 Every decision — automated or human — is logged in a full audit trail for ISO 9001 compliance.
 
 ![Architecture Diagram](bba_architecture.svg)
+
 ## 🛠️ Tech Stack
 
 | Layer | Technology |
 |-------|-----------|
 | IDE | Google Antigravity IDE |
-| AI Model | Gemini 3.5 Flash / Claude Sonnet 4.6 |
-| Agent Framework | Google ADK (Agent Development Kit) |
-| MCP Servers | Google BigQuery, Cloud SQL, Developer Knowledge |
+| AI Model | Gemini 2.5 Flash |
 | Frontend | HTML5, CSS3, Vanilla JavaScript |
 | Deployment | Cloudflare Workers |
-| CLI | Antigravity CLI (agy) |
 
----
+*Explored during the course: Google ADK and MCP servers (BigQuery, Cloud SQL) as part of Day 2–3 assignment exercises — not part of the deployed production stack above.*
 
 ## 📅 Day by Day Progress
 
 | Day | Topic | What I Built |
 |-----|-------|-------------|
 | ✅ Day 1 | Vibe Coding & Web Apps | Full company website deployed live |
-| ✅ Day 2 | MCP & Agent Tools | Connected BigQuery, Cloud SQL, Developer Knowledge MCP |
-| ✅ Day 3 | Agent Skills & ADK | Multilingual AI chat agent on live website |
+| ✅ Day 2 | MCP & Agent Tools | Explored BigQuery, Cloud SQL, Developer Knowledge MCP servers |
+| ✅ Day 3 | Agent Skills & Chat Integration | Multilingual AI chat agent on live website |
 | ✅ Day 4 | Security & HITL | Human approval dashboard with risk scoring |
 | 🔄 Day 5 | Capstone | Final polish & submission |
 
@@ -104,9 +120,17 @@ open "day4-hitl-agent/index.html"
 
 ---
 
+## 🔭 What I'd Improve With More Time
+
+- Persist HITL dashboard state to a real database instead of in-memory session state, so approval history survives a page refresh
+- Add authentication to the Staff Portal beyond the current access flow
+- Expand risk scoring with more granular buyer history and repeat-order signals
+- Connect the chat agent's high-risk flags directly into the HITL queue in real time (currently simulated separately)
+
+
 ## 👤 Author
 
-**Babar  Hussain Shah**
+**Babar Hussain Shah**
 - 🎓 2nd Year AI Student — Jiangxi University of Science & Technology, China
 - 🌐 [LinkedIn](https://linkedin.com/in/babar-hussain-shah-/)
 - 💻 [GitHub](https://github.com/babarshah0525-lgtm)
