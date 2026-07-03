@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "bbc-antigravity",
+  "compatibility_date": "2026-07-03",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": "bba-export-agent"
+  },
+  "compatibility_flags": [
+    "nodejs_compat"
+  ]
+}
