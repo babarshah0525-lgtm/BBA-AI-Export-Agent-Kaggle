@@ -49,7 +49,6 @@ BOPP film exporters lose hours manually screening buyer inquiries — BBA's AI a
 - One-click Approve / Reject / Request Info
 - ISO 9001 compliant audit trail
 - Security alerts for spam detection
-- Security alerts for spam detection
 
 ---
 
