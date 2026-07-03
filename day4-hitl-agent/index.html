@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BBA Export Approval Center | Human-in-the-Loop Dashboard</title>
+  <meta name="description" content="BBA Exports internal HITL approval dashboard for managing export inquiry classification, risk scoring, and human review workflows. ISO 9001 certified operations.">
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════
+       NOTIFICATION TOAST SYSTEM
+  ══════════════════════════════════════════ -->
+  <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+  <!-- ══════════════════════════════════════════
+       MODAL OVERLAY — Action Confirmation
+  ══════════════════════════════════════════ -->
+  <div id="modalOverlay" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card glass-card">
+      <div class="modal-header">
+        <div class="modal-icon" id="modalIcon"></div>
+        <h3 class="modal-title" id="modalTitle">Confirm Action</h3>
+        <button class="modal-close" id="modalClose" aria-label="Close modal">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-inquiry-summary" id="modalInquirySummary"></div>
+        <div class="modal-form-group" id="modalFormGroup">
+          <label class="modal-label" for="modalReason">
+            <span id="modalReasonLabel">Reason / Notes</span>
+            <span class="required-badge">required</span>
+          </label>
+          <textarea
+            id="modalReason"
+            class="modal-textarea"
+            placeholder="Enter your reason or additional notes..."
+            rows="4"
+            maxlength="500"
+          ></textarea>
+          <div class="char-count"><span id="charCount">0</span>/500</div>
+        </div>
+        <div class="modal-preview-section" id="modalPreviewSection">
+          <div class="preview-label">
+            <i class="fa-solid fa-envelope"></i>
+            Auto-Generated Response Preview
+          </div>
+          <div class="email-preview-card" id="emailPreviewCard"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-ghost" id="modalCancelBtn">Cancel</button>
+        <button class="btn" id="modalConfirmBtn">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       HEADER
+  ══════════════════════════════════════════ -->
+  <header class="dashboard-header">
+    <div class="header-inner">
+      <!-- Logo / Brand -->
+      <div class="header-brand">
+        <div class="brand-logo">
+          <span class="logo-bba">BBA</span>
+          <div class="logo-divider"></div>
+          <div class="logo-text">
+            <span class="logo-main">Export Approval Center</span>
+            <span class="logo-sub">Human-in-the-Loop Dashboard</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Header Center — Live indicator -->
+      <div class="header-center">
+        <div class="live-indicator">
+          <span class="live-dot"></span>
+          <span class="live-text">LIVE</span>
+        </div>
+        <div class="header-clock" id="headerClock">--:--:--</div>
+        <div class="header-date" id="headerDate">--</div>
+      </div>
+
+      <!-- Header Right — Actions -->
+      <div class="header-actions">
+        <div class="pending-badge-large" id="pendingBadgeLarge">
+          <i class="fa-solid fa-clock"></i>
+          <span id="pendingBadgeCount">0</span> Pending
+        </div>
+        <button class="btn btn-sm btn-ghost" id="refreshBtn" title="Refresh data">
+          <i class="fa-solid fa-rotate"></i>
+          Refresh
+        </button>
+        <button class="btn btn-sm btn-primary" id="simulateBtn" title="Simulate a new inquiry arriving">
+          <i class="fa-solid fa-plus"></i>
+          Simulate Inquiry
+        </button>
+        <button class="btn btn-sm btn-security" id="securitySimBtn" title="Run live security attack simulation">
+          <i class="fa-solid fa-shield-virus"></i>
+          Security Simulation
+        </button>
+        <div class="operator-chip">
+          <div class="operator-avatar">SM</div>
+          <div class="operator-info">
+            <span class="operator-name">Sales Manager</span>
+            <span class="operator-role">ISO 9001 Authorized</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════
+       MAIN DASHBOARD
+  ══════════════════════════════════════════ -->
+  <main class="dashboard-main">
+
+    <!-- STATS BAR -->
+    <section class="stats-bar" aria-label="Summary statistics">
+      <div class="stat-card glass-card" id="statTotal">
+        <div class="stat-icon stat-icon-blue">
+          <i class="fa-solid fa-inbox"></i>
+        </div>
+        <div class="stat-info">
+          <span class="stat-value" id="statTotalVal">0</span>
+          <span class="stat-label">Total Today</span>
+        </div>
+        <div class="stat-trend" id="statTotalTrend">
+          <i class="fa-solid fa-arrow-trend-up"></i>
+          <span>+12%</span>
+        </div>
+      </div>
+
+      <div class="stat-card glass-card" id="statAutoApproved">
+        <div class="stat-icon stat-icon-green">
+          <i class="fa-solid fa-robot"></i>
+        </div>
+        <div class="stat-info">
+          <span class="stat-value" id="statAutoVal">0</span>
+          <span class="stat-label">Auto-Approved</span>
+        </div>
+        <div class="stat-sparkline" id="sparklineAuto"></div>
+      </div>
+
+      <div class="stat-card glass-card stat-card-highlight" id="statPending">
+        <div class="stat-icon stat-icon-amber">
+          <i class="fa-solid fa-hourglass-half"></i>
+        </div>
+        <div class="stat-info">
+          <span class="stat-value" id="statPendingVal">0</span>
+          <span class="stat-label">Pending Review</span>
+        </div>
+        <div class="urgency-bar" id="urgencyBar"></div>
+      </div>
+
+      <div class="stat-card glass-card" id="statRejected">
+        <div class="stat-icon stat-icon-red">
+          <i class="fa-solid fa-ban"></i>
+        </div>
+        <div class="stat-info">
+          <span class="stat-value" id="statRejectedVal">0</span>
+          <span class="stat-label">Rejected</span>
+        </div>
+        <div class="stat-trend stat-trend-down" id="statRejectedTrend">
+          <i class="fa-solid fa-arrow-trend-down"></i>
+          <span>-3%</span>
+        </div>
+      </div>
+
+      <div class="stat-card glass-card" id="statApprovalRate">
+        <div class="stat-icon stat-icon-purple">
+          <i class="fa-solid fa-chart-pie"></i>
+        </div>
+        <div class="stat-info">
+          <span class="stat-value" id="statRateVal">--</span>
+          <span class="stat-label">Approval Rate</span>
+        </div>
+        <div class="rate-arc-container">
+          <svg class="rate-arc" viewBox="0 0 80 40" id="rateArcSvg">
+            <path d="M 10 35 A 30 30 0 0 1 70 35" fill="none" stroke="#2a2a2a" stroke-width="6" stroke-linecap="round"/>
+            <path id="rateArcFill" d="M 10 35 A 30 30 0 0 1 70 35" fill="none" stroke="#22c55e" stroke-width="6" stroke-linecap="round" stroke-dasharray="94" stroke-dashoffset="94"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECURITY ALERTS BANNER -->
+    <section class="alerts-section" id="alertsSection" aria-label="Security alerts" style="display:none;">
+      <div class="alerts-header">
+        <div class="alerts-title">
+          <i class="fa-solid fa-shield-halved"></i>
+          Security Alerts
+        </div>
+        <button class="btn btn-xs btn-ghost" id="dismissAlertsBtn">
+          <i class="fa-solid fa-check"></i> Dismiss All
+        </button>
+      </div>
+      <div class="alerts-list" id="alertsList"></div>
+    </section>
+
+    <!-- MAIN GRID (Queue + Audit) -->
+    <div class="dashboard-grid">
+
+      <!-- LEFT COLUMN — PENDING QUEUE -->
+      <section class="queue-section">
+        <div class="section-header">
+          <div class="section-title-group">
+            <h2 class="section-title">
+              <i class="fa-solid fa-list-check"></i>
+              Pending Review Queue
+            </h2>
+            <div class="queue-count-badge" id="queueCountBadge">0 items</div>
+          </div>
+          <div class="queue-controls">
+            <div class="search-box">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input
+                type="search"
+                id="queueSearch"
+                class="search-input"
+                placeholder="Search buyer, country, product..."
+                autocomplete="off"
+              >
+            </div>
+            <select class="filter-select" id="riskFilter" aria-label="Filter by risk level">
+              <option value="all">All Risk Levels</option>
+              <option value="HIGH">High Risk</option>
+              <option value="MEDIUM">Medium Risk</option>
+              <option value="LOW">Low Risk</option>
+            </select>
+            <select class="filter-select" id="sortSelect" aria-label="Sort queue">
+              <option value="newest">Newest First</option>
+              <option value="oldest">Oldest First</option>
+              <option value="risk-high">Highest Risk</option>
+              <option value="quantity-high">Largest Order</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Queue Empty State -->
+        <div class="queue-empty" id="queueEmpty" style="display:none;">
+          <div class="empty-icon"><i class="fa-solid fa-circle-check"></i></div>
+          <h3>All Clear!</h3>
+          <p>No pending inquiries require human review at this time.</p>
+          <button class="btn btn-primary" id="emptySimulateBtn">
+            <i class="fa-solid fa-plus"></i> Simulate Inquiry
+          </button>
+        </div>
+
+        <!-- Pending Cards Container -->
+        <div class="queue-list" id="queueList" role="list"></div>
+
+        <!-- Bulk Actions Bar -->
+        <div class="bulk-actions" id="bulkActions" style="display:none;">
+          <span class="bulk-selected-count" id="bulkSelectedCount">0 selected</span>
+          <button class="btn btn-sm btn-approve" id="bulkApproveBtn">
+            <i class="fa-solid fa-check-double"></i> Approve Selected
+          </button>
+          <button class="btn btn-sm btn-reject" id="bulkRejectBtn">
+            <i class="fa-solid fa-ban"></i> Reject Selected
+          </button>
+        </div>
+      </section>
+
+      <!-- RIGHT COLUMN — AUDIT TRAIL -->
+      <aside class="audit-section">
+        <div class="section-header">
+          <div class="section-title-group">
+            <h2 class="section-title">
+              <i class="fa-solid fa-timeline"></i>
+              Audit Trail
+            </h2>
+            <div class="iso-badge">
+              <i class="fa-solid fa-certificate"></i> ISO 9001
+            </div>
+          </div>
+          <div class="audit-controls">
+            <select class="filter-select filter-select-sm" id="auditFilter" aria-label="Filter audit log">
+              <option value="all">All Actions</option>
+              <option value="APPROVED">Approved</option>
+              <option value="REJECTED">Rejected</option>
+              <option value="INFO_REQUESTED">Info Requested</option>
+              <option value="AUTO_APPROVED">Auto-Approved</option>
+            </select>
+            <button class="btn btn-xs btn-ghost" id="exportAuditBtn" title="Export audit log as JSON">
+              <i class="fa-solid fa-download"></i> Export
+            </button>
+          </div>
+        </div>
+
+        <!-- Audit Timeline -->
+        <div class="audit-timeline" id="auditTimeline" role="log" aria-label="Audit trail log">
+          <div class="audit-empty" id="auditEmpty">
+            <i class="fa-solid fa-scroll"></i>
+            <p>Audit records will appear here after actions are taken.</p>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- AGENT WORKFLOW PANEL -->
+    <section class="workflow-section glass-card">
+      <div class="section-header">
+        <h2 class="section-title">
+          <i class="fa-solid fa-diagram-project"></i>
+          Agent Decision Workflow
+        </h2>
+        <div class="workflow-stats-mini" id="workflowStatsMini"></div>
+      </div>
+      <div class="workflow-diagram">
+        <div class="workflow-node wf-start">
+          <div class="wf-node-icon"><i class="fa-solid fa-globe"></i></div>
+          <div class="wf-node-label">Buyer Inquiry<br><small>Website Form</small></div>
+        </div>
+        <div class="workflow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+        <div class="workflow-node wf-agent">
+          <div class="wf-node-icon"><i class="fa-solid fa-robot"></i></div>
+          <div class="wf-node-label">AI Agent<br><small>Classify &amp; Score</small></div>
+        </div>
+        <div class="workflow-arrow workflow-arrow-split"></div>
+        <div class="workflow-branches">
+          <div class="workflow-branch branch-auto">
+            <div class="branch-condition">Score &lt; 40<br>Standard Product<br>&lt; 5 tons</div>
+            <div class="workflow-arrow"><i class="fa-solid fa-arrow-down"></i></div>
+            <div class="workflow-node wf-auto">
+              <div class="wf-node-icon"><i class="fa-solid fa-check"></i></div>
+              <div class="wf-node-label">Auto-Approve<br><small>Send Confirmation</small></div>
+            </div>
+          </div>
+          <div class="workflow-branch branch-human">
+            <div class="branch-condition">Score ≥ 40<br>Large / OEM / New<br>Country / Suspicious</div>
+            <div class="workflow-arrow"><i class="fa-solid fa-arrow-down"></i></div>
+            <div class="workflow-node wf-hitl">
+              <div class="wf-node-icon"><i class="fa-solid fa-user-check"></i></div>
+              <div class="wf-node-label">Human Review<br><small>This Dashboard</small></div>
+            </div>
+          </div>
+        </div>
+        <div class="workflow-node wf-end">
+          <div class="wf-node-icon"><i class="fa-solid fa-envelope"></i></div>
+          <div class="wf-node-label">Auto-Send Response<br><small>to Buyer</small></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="dashboard-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo-bba-sm">BBA</span> Exports — Precision Film. Global Standard.
+      </div>
+      <div class="footer-meta">
+        <span><i class="fa-solid fa-certificate"></i> ISO 9001:2015 Certified</span>
+        <span class="footer-sep">|</span>
+        <span><i class="fa-solid fa-shield-halved"></i> Internal Use Only</span>
+        <span class="footer-sep">|</span>
+        <span><i class="fa-solid fa-location-dot"></i> Ganzhou, China</span>
+        <span class="footer-sep">|</span>
+        <span id="footerAuditCount">0 records in audit log</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ══════════════════════════════════════════
+       SECURITY SIMULATION MODAL
+  ══════════════════════════════════════════ -->
+  <div id="securitySimOverlay" class="secsim-overlay" role="dialog" aria-modal="true" aria-labelledby="secSimTitle">
+    <div class="secsim-card">
+
+      <!-- Header -->
+      <div class="secsim-header">
+        <div class="secsim-title-group">
+          <i class="fa-solid fa-shield-virus secsim-shield-icon"></i>
+          <div>
+            <h2 class="secsim-title" id="secSimTitle">Security Attack Simulation</h2>
+            <p class="secsim-subtitle">Live demo — BBA Export AI Security Layer</p>
+          </div>
+        </div>
+        <button class="secsim-close" id="secSimCloseBtn" aria-label="Close simulation">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Test Cards Row -->
+      <div class="secsim-tests">
+        <div class="secsim-test-card" id="simCard0">
+          <div class="secsim-test-icon"><i class="fa-solid fa-syringe"></i></div>
+          <div class="secsim-test-label">Test 1</div>
+          <div class="secsim-test-name">Prompt Injection</div>
+          <div class="secsim-test-status" id="simStatus0">PENDING</div>
+        </div>
+        <div class="secsim-test-card" id="simCard1">
+          <div class="secsim-test-icon"><i class="fa-solid fa-bolt"></i></div>
+          <div class="secsim-test-label">Test 2</div>
+          <div class="secsim-test-name">Spam / Rate Limit</div>
+          <div class="secsim-test-status" id="simStatus1">PENDING</div>
+        </div>
+        <div class="secsim-test-card" id="simCard2">
+          <div class="secsim-test-icon"><i class="fa-solid fa-user-check"></i></div>
+          <div class="secsim-test-label">Test 3</div>
+          <div class="secsim-test-name">Valid Inquiry</div>
+          <div class="secsim-test-status" id="simStatus2">PENDING</div>
+        </div>
+      </div>
+
+      <!-- Terminal Window -->
+      <div class="secsim-terminal">
+        <div class="terminal-titlebar">
+          <span class="terminal-dot td-red"></span>
+          <span class="terminal-dot td-amber"></span>
+          <span class="terminal-dot td-green"></span>
+          <span class="terminal-title">bba-security-sim ~ live log</span>
+        </div>
+        <div class="terminal-body" id="terminalBody">
+          <div class="terminal-prompt">
+            <span class="term-user">bba@security</span><span class="term-sep">:</span><span class="term-path">~</span><span class="term-dollar">$</span>
+            <span class="term-cmd"> Press <strong>Run Simulation</strong> to begin...</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Score Card (hidden until complete) -->
+      <div class="secsim-score-card" id="secSimScoreCard" style="display:none;">
+        <i class="fa-solid fa-shield-check secsim-score-icon"></i>
+        <div class="secsim-score-text" id="secSimScoreText">3/3 threats blocked — System Secure</div>
+        <div class="secsim-score-sub">All security controls validated. Ready for Kaggle presentation.</div>
+      </div>
+
+      <!-- Footer Buttons -->
+      <div class="secsim-footer">
+        <button class="btn btn-ghost" id="secSimCancelBtn">Close</button>
+        <button class="btn btn-security" id="secSimRunBtn">
+          <i class="fa-solid fa-play"></i>
+          Run Simulation
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BBA Exports - Premium BOPP & PVC Packaging Film Exporter</title>
+  <meta name="description" content="BBA Exports is a premier global supplier of high-quality BOPP packaging film, PVC shrink film, and custom flexible packaging solutions. Request a quote online today.">
+  <!-- Google Fonts: Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header & Navigation -->
+  <header class="main-header">
+    <div class="header-container">
+      <a href="#" class="logo">
+        <span class="logo-accent">BBA</span> Exports
+      </a>
+      <nav class="nav-menu" id="navMenu">
+        <a href="#home" class="nav-link active" data-i18n="navHome">Home</a>
+        <a href="#products" class="nav-link" data-i18n="navProducts">Products</a>
+        <a href="#about" class="nav-link" data-i18n="navAbout">About Us</a>
+        <a href="#quote" class="nav-link" data-i18n="navQuote">Get a Quote</a>
+      </nav>
+      <div class="header-actions">
+        <!-- Language Selector -->
+        <div class="lang-selector">
+          <button class="lang-btn" id="langBtn">
+            <i class="fa-solid fa-globe"></i>
+            <span id="currentLangLabel">English</span>
+            <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+          </button>
+          <div class="lang-dropdown" id="langDropdown">
+            <div class="lang-option active" data-lang="en">English</div>
+            <div class="lang-option" data-lang="ur">اردو (Urdu)</div>
+            <div class="lang-option" data-lang="zh">中文 (Chinese)</div>
+          </div>
+        </div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero-section">
+    <div class="hero-bg-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+    </div>
+    <div class="hero-container">
+      <div class="hero-content">
+        <span class="hero-badge" data-i18n="heroBadge">Global Packaging Partner</span>
+        <h1 class="hero-title" id="heroTitle" data-i18n="heroTitle">Innovative Flexible Packaging Solutions for Global Brands</h1>
+        <p class="hero-desc" data-i18n="heroDesc">We manufacture and export high-performance BOPP packaging films, premium PVC shrink films, and custom-tailored flexible packaging solutions that protect your products and elevate your brand presence globally.</p>
+        <div class="hero-actions-container">
+          <a href="#quote" class="btn btn-primary" data-i18n="heroBtnQuote">Request a Quote</a>
+          <button class="btn btn-secondary" id="heroBtnChat" data-i18n="heroBtnChat">Talk to Agent</button>
+        </div>
+        <div class="hero-features">
+          <div class="feature-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span data-i18n="feature1">Premium Grade Materials</span>
+          </div>
+          <div class="feature-item">
+            <i class="fa-solid fa-globe"></i>
+            <span data-i18n="feature2">Export to 50+ Countries</span>
+          </div>
+          <div class="feature-item">
+            <i class="fa-solid fa-handshake"></i>
+            <span data-i18n="feature3">MOQ 1 Metric Ton</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="visual-card glass-panel">
+          <div class="visual-header">
+            <div class="dots">
+              <span></span><span></span><span></span>
+            </div>
+            <span class="visual-title">BBA Export Portal</span>
+          </div>
+          <div class="visual-body">
+            <!-- Simulated Film Roll Rendering via SVG / CSS -->
+            <div class="film-roll-container">
+              <div class="film-cylinder">
+                <div class="cylinder-top"></div>
+                <div class="cylinder-side"></div>
+                <div class="cylinder-sheen"></div>
+              </div>
+              <div class="film-sheet"></div>
+              <div class="visual-badge packaging-badge">
+                <i class="fa-solid fa-box-open"></i>
+                <span data-i18n="filmBadgeText">BOPP Film Roll</span>
+              </div>
+            </div>
+            <div class="visual-stats">
+              <div class="stat-card">
+                <span class="stat-num">99.8%</span>
+                <span class="stat-label" data-i18n="statClarity">Optical Clarity</span>
+              </div>
+              <div class="stat-card">
+                <span class="stat-num">&lt;2.0s</span>
+                <span class="stat-label" data-i18n="statSealing">Seal Threshold</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section id="products" class="products-section">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-subtitle" data-i18n="prodSubtitle">Our Offerings</span>
+        <h2 class="section-title" data-i18n="prodTitle">Industrial Packaging Product Range</h2>
+        <div class="section-divider"></div>
+      </div>
+      
+      <div class="products-grid">
+        <!-- BOPP Packaging Film Card -->
+        <div class="product-card">
+          <div class="product-icon-wrapper">
+            <i class="fa-solid fa-scroll product-icon"></i>
+          </div>
+          <h3 class="product-name" data-i18n="boppName">BOPP Packaging Film</h3>
+          <p class="product-desc" data-i18n="boppDesc">Biaxially Oriented Polypropylene Film featuring superior mechanical, optical, and barrier properties. Ideal for food packaging, labeling, and lamination.</p>
+          <ul class="product-specs">
+            <li>
+              <span class="spec-label" data-i18n="specThickness">Thickness:</span>
+              <span class="spec-val">12 - 40 μm</span>
+            </li>
+            <li>
+              <span class="spec-label" data-i18n="specType">Available Types:</span>
+              <span class="spec-val" data-i18n="boppTypes">Plain, Matt, Pearlized, Heat Sealable</span>
+            </li>
+            <li>
+              <span class="spec-label" data-i18n="specFeatures">Key Features:</span>
+              <span class="spec-val" data-i18n="boppFeatures">High clarity, moisture barrier, excellent tensile strength</span>
+            </li>
+          </ul>
+          <button class="product-btn btn-product-chat" data-product="BOPP" data-i18n="chatAboutProduct">Inquire about BOPP</button>
+        </div>
+
+        <!-- PVC Shrink Film Card -->
+        <div class="product-card">
+          <div class="product-icon-wrapper">
+            <i class="fa-solid fa-prescription-bottle product-icon"></i>
+          </div>
+          <h3 class="product-name" data-i18n="pvcName">PVC Shrink Film</h3>
+          <p class="product-desc" data-i18n="pvcDesc">Polyvinyl Chloride shrink film with superb clarity and high shrinkage rates. Perfect for bottle sleeves, caps, cosmetics, and protective multi-packs.</p>
+          <ul class="product-specs">
+            <li>
+              <span class="spec-label" data-i18n="specShrinkage">Shrink Ratio:</span>
+              <span class="spec-val">Up to 50% - 60%</span>
+            </li>
+            <li>
+              <span class="spec-label" data-i18n="specApplications">Applications:</span>
+              <span class="spec-val" data-i18n="pvcApps">Beverage labels, food jars, battery sleeves, cosmetics</span>
+            </li>
+            <li>
+              <span class="spec-label" data-i18n="specFeatures">Key Features:</span>
+              <span class="spec-val" data-i18n="pvcFeatures">Low shrink temperature, glass-like transparency, high glossy finish</span>
+            </li>
+          </ul>
+          <button class="product-btn btn-product-chat" data-product="PVC" data-i18n="chatAboutProduct">Inquire about PVC</button>
+        </div>
+
+        <!-- Custom Flexible Packaging Card -->
+        <div class="product-card">
+          <div class="product-icon-wrapper">
+            <i class="fa-solid fa-box product-icon"></i>
+          </div>
+          <h3 class="product-name" data-i18n="customName">Custom Packaging Solutions</h3>
+          <p class="product-desc" data-i18n="customDesc">Tailor-made multi-layer laminate bags, stand-up pouches with zippers, and printed roll stocks customized to your exact moisture and oxygen barrier specs.</p>
+          <ul class="product-specs">
+            <li>
+              <span class="spec-label" data-i18n="specPrinting">Printing:</span>
+              <span class="spec-val" data-i18n="customPrint">High-definition rotogravure up to 10 colors</span>
+            </li>
+            <li>
+              <span class="spec-label" data-i18n="specPouchTypes">Pouch Formats:</span>
+              <span class="spec-val" data-i18n="customTypes">Stand-up, Zipper pouch, Quad seal, Flat bottom</span>
+            </li>
+            <li>
+              <span class="spec-label" data-i18n="specMaterials">Material Blends:</span>
+              <span class="spec-val">PET/AL/PE, PET/VMPET/PE, BOPP/CPP</span>
+            </li>
+          </ul>
+          <button class="product-btn btn-product-chat" data-product="Custom Packaging" data-i18n="chatAboutProduct">Inquire about Custom</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Us Section -->
+  <section id="about" class="about-section">
+    <div class="section-container">
+      <div class="about-grid">
+        <div class="about-text-content">
+          <span class="section-subtitle" data-i18n="aboutSubtitle">Why Partner With BBA</span>
+          <h2 class="about-title" data-i18n="aboutTitle">Leading the Way in Export-Grade Flexible Packaging</h2>
+          <p class="about-paragraph" data-i18n="aboutPara1">BBA Exports has established itself as a premier global distributor and supply chain partner for state-of-the-art packaging films. We serve industrial users, food manufacturers, and cosmetic brands in over 50 countries, offering tailored support for large-scale B2B exports.</p>
+          <p class="about-paragraph" data-i18n="aboutPara2">With our streamlined logistics networks, strict QA protocols, and dedicated multi-language assistance, we bridge the gap between production efficiency and international shipping demands. We specialize in custom formulations to match specific regional machinery settings and climate conditions.</p>
+          
+          <div class="about-stats-row">
+            <div class="about-stat-item">
+              <span class="about-stat-number">15K+</span>
+              <span class="about-stat-label" data-i18n="aboutStat1">Tons Shipped Annually</span>
+            </div>
+            <div class="about-stat-item">
+              <span class="about-stat-number">50+</span>
+              <span class="about-stat-label" data-i18n="aboutStat2">Global Destinations</span>
+            </div>
+            <div class="about-stat-item">
+              <span class="about-stat-number">24/7</span>
+              <span class="about-stat-label" data-i18n="aboutStat3">Multilingual Support</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-visual-content">
+          <div class="about-image-card glass-panel">
+            <div class="globe-container">
+              <i class="fa-solid fa-earth-americas globe-icon"></i>
+              <div class="connection-lines">
+                <span class="line line-1"></span>
+                <span class="line line-2"></span>
+                <span class="line line-3"></span>
+              </div>
+            </div>
+            <div class="floating-badge badge-top-right">
+              <i class="fa-solid fa-ship"></i>
+              <span data-i18n="badgeGlobalPort">FOB/CIF Shipping</span>
+            </div>
+            <div class="floating-badge badge-bottom-left">
+              <i class="fa-solid fa-medal"></i>
+              <span data-i18n="badgeISO">ISO 9001:2015 Certified</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quote Request Form Section -->
+  <section id="quote" class="quote-section">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-subtitle" data-i18n="quoteSubtitle">Get a Proposal</span>
+        <h2 class="section-title" data-i18n="quoteTitle">Request a B2B Export Quote</h2>
+        <div class="section-divider"></div>
+      </div>
+      
+      <div class="quote-wrapper">
+        <div class="quote-form-container glass-panel">
+          <!-- Form Submission Success Screen -->
+          <div class="form-success-overlay" id="formSuccessOverlay">
+            <div class="success-content">
+              <div class="success-icon-wrapper">
+                <i class="fa-solid fa-circle-check"></i>
+              </div>
+              <h3 data-i18n="successTitle">Quote Request Submitted!</h3>
+              <p data-i18n="successDesc">Thank you for contacting BBA Exports. Our export sales representative will review your requirements and email a custom quotation within 12 hours.</p>
+              <button class="btn btn-primary" id="btnResetForm" data-i18n="successBtn">Submit Another Inquiry</button>
+            </div>
+          </div>
+          
+          <form class="quote-form" id="quoteForm" novalidate>
+            <div class="form-grid">
+              <!-- Full Name -->
+              <div class="form-group">
+                <label for="fullName" data-i18n="labelName">Full Name *</label>
+                <div class="input-wrapper">
+                  <i class="fa-regular fa-user input-icon"></i>
+                  <input type="text" id="fullName" name="fullName" required placeholder="John Doe">
+                </div>
+                <span class="error-message" id="errorFullName" data-i18n="errorName">Please enter your name.</span>
+              </div>
+              
+              <!-- Email Address -->
+              <div class="form-group">
+                <label for="email" data-i18n="labelEmail">Business Email *</label>
+                <div class="input-wrapper">
+                  <i class="fa-regular fa-envelope input-icon"></i>
+                  <input type="email" id="email" name="email" required placeholder="john@company.com">
+                </div>
+                <span class="error-message" id="errorEmail" data-i18n="errorEmail">Please enter a valid business email.</span>
+              </div>
+              
+              <!-- Company Name -->
+              <div class="form-group">
+                <label for="companyName" data-i18n="labelCompany">Company Name *</label>
+                <div class="input-wrapper">
+                  <i class="fa-solid fa-building input-icon"></i>
+                  <input type="text" id="companyName" name="companyName" required placeholder="Enter Company Name">
+                </div>
+                <span class="error-message" id="errorCompany" data-i18n="errorCompany">Please enter your company name.</span>
+              </div>
+              
+              <!-- Country of Destination -->
+              <div class="form-group">
+                <label for="country" data-i18n="labelCountry">Destination Country *</label>
+                <div class="input-wrapper">
+                  <i class="fa-solid fa-map-pin input-icon"></i>
+                  <input type="text" id="country" name="country" required placeholder="e.g., United States, Saudi Arabia">
+                </div>
+                <span class="error-message" id="errorCountry" data-i18n="errorCountry">Please enter destination country.</span>
+              </div>
+              
+              <!-- Product Selection -->
+              <div class="form-group">
+                <label for="productSelect" data-i18n="labelProduct">Product Needed *</label>
+                <div class="input-wrapper">
+                  <i class="fa-solid fa-box-open input-icon"></i>
+                  <select id="productSelect" name="productSelect" required>
+                    <option value="" disabled selected data-i18n="selectProductPlaceholder">Select a product...</option>
+                    <option value="bopp" data-i18n="optBopp">BOPP Packaging Film</option>
+                    <option value="pvc" data-i18n="optPvc">PVC Shrink Film</option>
+                    <option value="custom" data-i18n="optCustom">Custom Flexible Packaging</option>
+                  </select>
+                </div>
+                <span class="error-message" id="errorProduct" data-i18n="errorProduct">Please select a product.</span>
+              </div>
+
+              <!-- Quantity (Metric Tons) -->
+              <div class="form-group">
+                <label for="quantity" data-i18n="labelQuantity">Order Quantity *</label>
+                <div class="input-wrapper">
+                  <i class="fa-solid fa-weight-hanging input-icon"></i>
+                  <input type="text" id="quantity" name="quantity" required placeholder="e.g., 5 Tons, 50,000 Pouches">
+                </div>
+                <span class="error-message" id="errorQuantity" data-i18n="errorQuantity">Please specify the quantity.</span>
+              </div>
+            </div>
+
+            <!-- Custom Requirements -->
+            <div class="form-group full-width">
+              <label for="specifications" data-i18n="labelSpecs">Specifications & Custom Requirements</label>
+              <textarea id="specifications" name="specifications" rows="4" placeholder="Enter thickness (micron), width, roll length, printing requirements, or application detail..."></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary btn-submit" id="btnSubmitQuote">
+                <span id="submitBtnText" data-i18n="btnSubmit">Submit Quote Request</span>
+                <i class="fa-solid fa-paper-plane"></i>
+                <div class="btn-spinner" id="btnSpinner"></div>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="main-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <a href="#" class="logo footer-logo"><span class="logo-accent">BBA</span> Exports</a>
+        <p class="footer-text" data-i18n="footerText">Your premier global packaging partner providing premium BOPP films, PVC shrink films, and custom barrier pouch solutions.</p>
+        <div class="social-links">
+          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" aria-label="WeChat" title="WeChat ID: BBA_Exports"><i class="fa-brands fa-weixin"></i></a>
+          <a href="#" aria-label="WhatsApp" title="WhatsApp Business: +1-555-123-4567"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-links-col">
+        <h4 data-i18n="footerProducts">Products</h4>
+        <ul class="footer-links">
+          <li><a href="#products" data-i18n="boppName">BOPP Packaging Film</a></li>
+          <li><a href="#products" data-i18n="pvcName">PVC Shrink Film</a></li>
+          <li><a href="#products" data-i18n="customName">Custom Packaging Solutions</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h4 data-i18n="footerCompany">Company</h4>
+        <ul class="footer-links">
+          <li><a href="#about" data-i18n="navAbout">About Us</a></li>
+          <li><a href="#home" data-i18n="navHome">Home</a></li>
+          <li><a href="#quote" data-i18n="navQuote">Get a Quote</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h4 data-i18n="footerContact">Contact Info</h4>
+        <ul class="footer-contact-info">
+          <li>
+            <i class="fa-solid fa-envelope"></i>
+            <span>export@bbaexports.com</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-phone"></i>
+            <span>+1 (800) 555-0199 (Global)</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-location-dot"></i>
+            <span data-i18n="footerAddress">Export Division Hub, Marseille, France</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 BBA Exports. All rights reserved. | <span data-i18n="footerTerms">Terms of Service</span> | <span data-i18n="footerPrivacy">Privacy Policy</span></p>
+    </div>
+  </footer>
+
+  <!-- Floating Multilingual Chat Widget -->
+  <div class="chat-widget-container" id="chatWidgetContainer">
+    <!-- Chat Badge Button -->
+    <button class="chat-trigger-btn" id="chatTriggerBtn" aria-label="Open Chat Agent">
+      <div class="chat-btn-pulse"></div>
+      <i class="fa-solid fa-comments chat-open-icon"></i>
+      <i class="fa-solid fa-xmark chat-close-icon"></i>
+      <span class="chat-online-badge"></span>
+      <span class="chat-tooltip-text" data-i18n="chatTooltip">Chat with Export Agent</span>
+    </button>
+
+    <!-- Chat Portal Frame -->
+    <div class="chat-portal glass-panel" id="chatPortal">
+      <!-- Chat Portal Header -->
+      <div class="chat-header">
+        <div class="agent-info">
+          <div class="agent-avatar-wrapper">
+            <!-- Simulated Avatar SVG -->
+            <svg class="agent-avatar" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="50" cy="50" r="48" fill="#0d9488"/>
+              <path d="M50 30 C58 30 64 36 64 44 C64 52 58 58 50 58 C42 58 36 52 36 44 C36 36 42 30 50 30 Z" fill="#ffffff"/>
+              <path d="M22 80 C22 66 32 58 50 58 C68 58 78 66 78 80 Z" fill="#ffffff"/>
+              <circle cx="75" cy="25" r="8" fill="#4ade80" stroke="#0f172a" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="agent-name-status">
+            <h4 data-i18n="agentName">BBA Export AI-Agent</h4>
+            <span class="status-online">
+              <span class="dot-online"></span>
+              <span data-i18n="agentStatus">Online | Speaks English, Urdu, Chinese</span>
+            </span>
+          </div>
+        </div>
+        <button class="chat-header-close-btn" id="chatHeaderCloseBtn" aria-label="Close Chat">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Chat Portal Body -->
+      <div class="chat-body" id="chatBody">
+        <!-- Messages Container -->
+        <div class="chat-messages" id="chatMessages">
+          <!-- Initial Welcome Message -->
+          <div class="message incoming">
+            <div class="message-content">
+              <p data-i18n="agentGreeting">Welcome to BBA Exports! I am your export inquiry assistant. I can help you with product technical specifications, minimum order quantities (MOQ), global shipping options, and custom packaging quotes in English, Urdu (اردو), or Chinese (中文). How can I assist you today?</p>
+              <span class="message-time">18:39</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chat Typing Indicator (hidden by default) -->
+        <div class="typing-indicator" id="typingIndicator">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+
+      <!-- Quick Action Buttons -->
+      <div class="chat-quick-actions" id="chatQuickActions">
+        <button class="quick-action-btn" data-action="bopp_specs" data-i18n="qaBopp">BOPP Film Specs</button>
+        <button class="quick-action-btn" data-action="pvc_specs" data-i18n="qaPvc">PVC Shrink Film Specs</button>
+        <button class="quick-action-btn" data-action="custom_pkg" data-i18n="qaCustom">Custom Packaging Options</button>
+        <button class="quick-action-btn" data-action="moq" data-i18n="qaMoq">MOQ & Lead Times</button>
+        <button class="quick-action-btn" data-action="shipping" data-i18n="qaShipping">Shipping & Incoterms</button>
+        <button class="quick-action-btn" data-action="quote" data-i18n="qaQuote">Request Quote Form</button>
+      </div>
+
+      <!-- Chat Input Area -->
+      <div class="chat-input-area">
+        <form class="chat-input-form" id="chatInputForm">
+          <input type="text" id="chatInputField" placeholder="Type your inquiry here..." autocomplete="off" required>
+          <button type="submit" class="chat-send-btn" id="chatSendBtn" aria-label="Send Message">
+            <i class="fa-solid fa-paper-plane"></i>
+          </button>
+        </form>
+        <div class="chat-disclaimer">
+          <span data-i18n="chatDisclaimer">Auto-translation active</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
